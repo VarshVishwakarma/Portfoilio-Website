@@ -209,11 +209,16 @@
             <span class="font-mono text-yellow-400 text-xs tracking-widest">🏆 TCS CODEVITA S13: RANK 1573</span>
         </div>
 
-        <h1 class="text-6xl md:text-8xl font-cyber font-black mb-2 leading-none tracking-tighter text-white">
-            VARSH <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue via-white to-neonRed animate-gradient-text">VISHWAKARMA</span>
+        <h1
+            class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-cyber font-black mb-2 leading-none tracking-tighter text-white break-words">
+            VARSH <br class="block sm:hidden" />
+            <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-neonBlue via-white to-neonRed animate-gradient-text">
+                VISHWAKARMA
+            </span>
         </h1>
-        <p class="text-gray-500 font-mono text-sm mb-4">[ He / Him ] • Bhopal, India</p>
+
+        <p class="text-gray-500 font-mono text-sm mb-4 mt-2">[ He / Him ] • Bhopal, India</p>
 
         <div class="flex justify-center gap-3 mb-8 opacity-60 hover:opacity-100 transition-opacity duration-300">
             {% set hero_socials = [
@@ -660,43 +665,32 @@
                     el.style.transform = `translateX(${x}px) translateY(${y}px)`;
                 });
 
-                // Glass Card Spotlight & Tilt
-                document.querySelectorAll('.glass-card, .social-link').forEach(card => {
+                // Glass Card Spotlight & Tilt (ONLY for cards, not social icons to avoid conflict)
+                document.querySelectorAll('.glass-card').forEach(card => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
 
-                    // Only apply spotlight variable to glass cards, not social links to avoid conflict
-                    if (card.classList.contains('glass-card')) {
-                        card.style.setProperty('--mouse-x', `${x}px`);
-                        card.style.setProperty('--mouse-y', `${y}px`);
-                    }
+                    // Spotlight
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
 
-                    // 3D Tilt Logic
-                    // We apply tilt to elements with 'data-tilt' OR class 'social-link'
-                    if (card.hasAttribute('data-tilt') || card.classList.contains('social-link')) {
+                    // 3D Tilt Logic (Only if it has data-tilt attribute)
+                    if (card.hasAttribute('data-tilt')) {
                         const centerX = rect.left + rect.width / 2;
                         const centerY = rect.top + rect.height / 2;
-                        // Use smaller tilt for small icons
-                        const tiltFactor = card.classList.contains('social-link') ? 10 : 5;
 
-                        const rotateX = ((e.clientY - centerY) / rect.height) * -tiltFactor;
-                        const rotateY = ((e.clientX - centerX) / rect.width) * tiltFactor;
+                        const rotateX = ((e.clientY - centerY) / rect.height) * -5;
+                        const rotateY = ((e.clientX - centerX) / rect.width) * 5;
                         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-                        // Add scale to social links on hover
-                        if (card.classList.contains('social-link') && card.matches(':hover')) {
-                            card.style.transform += ' scale(1.1)';
-                        }
                     }
                 });
             });
 
             // Reset Tilt
-            document.querySelectorAll('.glass-card, .social-link').forEach(card => {
+            document.querySelectorAll('.glass-card').forEach(card => {
                 card.addEventListener('mouseleave', () => {
-                    // Do not remove transform if it's a selection card (keep hover scale)
-                    if (!card.classList.contains('selection-card') && !card.classList.contains('skill-card') && !card.classList.contains('red-pop-card')) {
+                    if (card.hasAttribute('data-tilt')) {
                         card.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
                     }
                 });
