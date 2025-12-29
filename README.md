@@ -319,3 +319,9 @@ Email: varshv2007@gmail.com
 "The best way to predict the future is to invent it."
 
 © 2025 Varsh.AI | All Systems Operational
+
+🧑‍💻 Author
+Varsh Vishwakarma
+AI • ML • DL • Data Science • Cloud • Full-Stack ML Developer
+
+Building scalable intelligent systems that solve real business problems.
