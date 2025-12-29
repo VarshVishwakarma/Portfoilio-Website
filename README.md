@@ -1,5 +1,13 @@
 # ⚡ Varsh.AI | Next-Gen Intelligent Portfolio
 
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/2d7a3421-da86-4663-8aff-472d02a41f46" width="100%" autoplay muted loop>
+    Your browser does not support the video tag.
+  </video>
+  <br>
+  <i>Live demonstration of the Soul Foods Strategic Decision Engine</i>
+</div>
+
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-009688?style=for-the-badge&logo=fastapi)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
